@@ -11,6 +11,7 @@ public class BookManageView {
     }
 
     public void displayAllBooks(ArrayList<BookDTO> books) {
+        //ArratList BookDTO 매개변수로 전체 도서 출력
         for (BookDTO book : books) {
             displayBook(book);
         }
@@ -20,6 +21,7 @@ public class BookManageView {
         System.out.println(message);
     }
     public static void menu(){
+        //전체 메뉴에 대한 메서드
         System.out.println("===== 도서관리 시스템 =====");
         System.out.println("1. 도서정보 추가");
         System.out.println("2. 도서정보 조회");

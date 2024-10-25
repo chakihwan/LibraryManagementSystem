@@ -12,9 +12,11 @@ public class BookService {
     Scanner scanner = new Scanner(System.in);
 
     public BookService() {
+        //도서 목록 초기화
         imBookList();
     }
     private void imBookList() {
+        //기본 도서
         bookList.add(new BookDTO( "0001","소년이 온다","한강","창비",13500));
         bookList.add(new BookDTO( "0002","채식주의자","한강","창비",13500));
         bookList.add(new BookDTO( "0003","작별하지 않는다","한강","문학동네",15120));
@@ -28,6 +30,7 @@ public class BookService {
     }
 
     public void addBook() {
+        //도서 정보 추가 메서드
         System.out.print("ISBN : ");
         String isbn = scanner.nextLine();
         System.out.print("도서명 : ");
@@ -38,6 +41,7 @@ public class BookService {
         String publisher = scanner.nextLine();
         System.out.print("가격 : ");
         int price = scanner.nextInt();
+        scanner.nextLine();
 
         BookDTO newBook = new BookDTO(isbn, title, author, publisher, price);
         bookList.add(newBook);
@@ -45,6 +49,7 @@ public class BookService {
     }
 
     public BookDTO findIsbn(String isbn) {
+        // ISBN을 매개변수로 도서 조회
         for (BookDTO book : bookList) {
             if (book.getIsbn().equals(isbn)) {
                 return book;
@@ -54,6 +59,7 @@ public class BookService {
     }
 
     public void findBook() {
+        // 입력 받은 findIsbn통해 해당 도서 조회
         System.out.print("찾는 도서 ISBN을 입력하세요 : ");
         String isbn = scanner.nextLine();
         BookDTO book = findIsbn(isbn);
@@ -67,6 +73,7 @@ public class BookService {
 
 
     public boolean deleteBook() {
+        // 입력 받은 findIsbn을 통해 해당 도서 isbn 도서 삭제
         System.out.print("삭제할 도서의 ISBN을 입력하세요 ");
         String isbn = scanner.nextLine();
         BookDTO book = findIsbn(isbn);
@@ -81,6 +88,7 @@ public class BookService {
         return false;
     }
     public ArrayList<BookDTO> viewAllBooks() {
+        //전체 도서 목록 조회
         view.displayAllBooks(bookList);
         return bookList;
     }
